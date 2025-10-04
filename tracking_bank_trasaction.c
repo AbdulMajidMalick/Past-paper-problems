@@ -11,7 +11,7 @@ int main(){
           deposite++;
           printf("your remaing balance is:%.2f\n",balance);
         }
-        else if(transaction<0&&balance<transaction){
+        else if(transaction<0&&balance+transaction>0){
             balance+=transaction;
           withdrawl++;
           printf("your remaing balance is:%.2f",balance);
