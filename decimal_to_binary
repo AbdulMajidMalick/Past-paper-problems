@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main() {
+    int decimal, binary[32], i = 0;
+    
+    printf("=== Decimal to Binary Calculator ===\n\n");
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+    
+    // Handle special case of 0
+    if (decimal == 0) {
+        printf("Binary equivalent: 0\n");
+        return 0;
+    }
+    
+    // Handle negative numbers
+    if (decimal < 0) {
+        printf("Please enter a positive number.\n");
+        return 1;
+    }
+    
+    int original = decimal;
+    
+    // Convert decimal to binary
+    while (decimal > 0) {
+        binary[i] = decimal % 2;  // Store remainder (0 or 1)
+        decimal = decimal / 2;     // Divide by 2
+        i++;
+    }
+    
+    // Display result
+    printf("\nDecimal: %d\n", original);
+    printf("Binary:  ");
+    
+    // Print binary digits in reverse order
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+    printf("\n");
+    
+    // Show step-by-step conversion
+    printf("\n--- Conversion Steps ---\n");
+    decimal = original;
+    int step = 1;
+    
+    while (decimal > 0) {
+        printf("Step %d: %d / 2 = %d, Remainder = %d\n", 
+               step, decimal, decimal / 2, decimal % 2);
+        decimal = decimal / 2;
+        step++;
+    }
+    
+    return 0;
+}
